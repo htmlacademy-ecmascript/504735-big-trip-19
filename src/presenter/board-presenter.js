@@ -23,8 +23,8 @@ export default class BoardPresenter {
     render(new SortView(), this.boardComponent.getElement());
     render(this.eventListComponent, this.boardContainer);
     render(new EditingFormView({point: this.boardPoints[0], destinations: this.destinations, offers: this.offers}), this.eventListComponent.getElement());
-    for (let i = 1; i < this.boardPoints.length; i++) {
-      render(new RoutPointView({point: this.boardPoints[i], destinations: this.destinations, offers: this.offers}), this.eventListComponent.getElement());
-    }
+    this.boardPoints.forEach((el) => { render(new RoutPointView({point: el, destinations: this.destinations, offers: this.offers}), this.eventListComponent.getElement());
+    });
+
   }
 }

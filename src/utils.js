@@ -8,25 +8,9 @@ function getRandomArrayElement(items) {
 }
 
 //Генератор числа в диапазоне.
-const getRandomNumber = (from, to) => {
-  if (from < 0 || to < 0) {
-    return NaN;
-  }
-  if (Number.isInteger(from) && Number.isInteger(to)) {
-    if (from < to) {
-      return Math.floor(Math.random() * (to - from + 1)) + from;
-    } else {
-      return NaN;
-    }
-  } else {
-    return NaN;
-  }
-};
+const getRandomNumber = (from, to) => Math.floor(Math.random() * (to - from + 1)) + from;
 
-const getRandomDate = (minuteRange = 60, hourRange = 23, rangeOfDays = 5 ) => {
-  const today = new Date(Date.now());
-  return new Date(today.getYear() + 1900,today.getMonth(), today.getDate() + Math.random() * rangeOfDays, Math.random() * hourRange, Math.random() * minuteRange);
-};
+const getRandomDate = () => new Date();
 
 const isLongerDate = (date, minuteRange = 60, hourRange = 12) => {
   const newDate = new Date(date);
