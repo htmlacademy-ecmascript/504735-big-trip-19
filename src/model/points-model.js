@@ -1,21 +1,21 @@
 import {getRandomRoutePoint, availableOffers, destinations} from './../mock/points.js';
 
-const POINTS_COUNT = 7;
+const POINTS_COUNT = 0;
 
 export default class PointsModel {
-  points = Array.from({length: POINTS_COUNT}, getRandomRoutePoint);
-  destinations = destinations;
-  offers = availableOffers;
+  #points = Array.from({length: POINTS_COUNT}, getRandomRoutePoint);
+  #destinations = destinations;
+  #offers = availableOffers;
 
-  getPoints() {
-    return this.points;
+  get points() {
+    return this.#points;
   }
 
-  getAllDestinations() {
-    return this.destinations;
+  get allDestinations() {
+    return this.#destinations;
   }
 
-  getAllOffersByType() {
-    return this.offers;
+  get allOffersByType() {
+    return this.#offers;
   }
 }
