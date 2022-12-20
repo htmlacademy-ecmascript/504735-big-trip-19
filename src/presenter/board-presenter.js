@@ -37,8 +37,9 @@ export default class BoardPresenter {
   }
 
   #renderPoint({point, destinations, offers}) {
-    const pointComponent = new RoutPointView({point, destinations, offers });
+    const pointComponent = new RoutPointView({point, destinations, offers});
     const pointEditComponent = new EditingFormView({point, destinations, offers});
+
 
     const replacePointToForm = () => {
       this.#eventListComponent.element.replaceChild(pointEditComponent.element, pointComponent.element);
@@ -60,18 +61,17 @@ export default class BoardPresenter {
       replacePointToForm();
       document.addEventListener('keydown', escKeyDownHandler);
     });
-
-    // pointEditComponent.element.querySelector('form.event--edit').addEventListener('submit', (evt) => {
-    //   evt.preventDefault();
-    //   replaceFormToPoint();
-    //   document.removeEventListener('keydown', escKeyDownHandler);
-    // });
+    // console.log(pointEditComponent.element);
+    pointEditComponent.element.querySelector('form .event__save-btn').addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      replaceFormToPoint();
+      document.removeEventListener('keydown', escKeyDownHandler);
+    });
 
     pointEditComponent.element.querySelector('.event__rollup-btn').addEventListener('click', () => {
       replaceFormToPoint();
       document.removeEventListener('keydown', escKeyDownHandler);
     });
-
 
     render(pointComponent, this.#eventListComponent.element);
   }
